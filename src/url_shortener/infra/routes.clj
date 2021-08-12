@@ -6,8 +6,8 @@
             [clojure.pprint :as pp]
             [clojure.string :as str]
             [clojure.data.json :as json]
-            [url-shortener.controllers.hello_controller :as hello-controller]))
+            [url-shortener.controllers.url_controller :as url-controller]))
 
 (defroutes app-routes
-  (GET "/hello" [] hello-controller/hello-name)
+  (GET "/create" [] url-controller/create)
   (route/not-found "Error, page not found!"))
