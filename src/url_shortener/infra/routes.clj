@@ -10,4 +10,5 @@
 
 (defroutes app-routes
   (GET "/create" [] url-controller/create)
+  (GET "/:hash" [] url-controller/redirect)
   (route/not-found "Error, page not found!"))

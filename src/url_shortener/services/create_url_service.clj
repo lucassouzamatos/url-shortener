@@ -13,3 +13,8 @@
   (let [hashed (hash-url url)]
     (url_repository/create-uri url hashed)
     {:url (str base-url hashed)}))
+
+(defn get-url-by-hash
+  [hash]
+  (let [document (url_repository/get-by-hash hash)]
+    (document :original)))
