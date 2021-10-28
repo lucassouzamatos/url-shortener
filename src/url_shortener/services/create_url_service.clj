@@ -6,7 +6,10 @@
   [url] 
   (format "%x" (Murmur3/hashUnencodedChars url)))
 
+(def base-url "http://localhost:4000/")
+
 (defn generate-url
   [url]
   (let [hashed (hash-url url)]
-    (url_repository/create-uri url hashed)))
+    (url_repository/create-uri url hashed)
+    {:url (str base-url hashed)}))

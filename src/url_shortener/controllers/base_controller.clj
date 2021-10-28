@@ -1,7 +1,7 @@
-(ns url-shortener.controllers.base_controller)
+(ns url-shortener.controllers.base_controller
+  (:require [ring.util.response :refer [response]]))
 
 (defn success 
   [data]
-  {:status  200
-    :headers {"Content-Type" "application/json"}
-    :body data})
+  "Return a success response with status 200"
+  (assoc (response {:data data}) :status 200))

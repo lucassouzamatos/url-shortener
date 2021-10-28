@@ -9,6 +9,7 @@
                  [ring/ring-defaults "0.3.2"]
                  [org.clojure/data.json "0.2.6"]
                  [mount "0.1.16"]
+                 [ring/ring-json "0.5.1"]
                  [org.clojure/java.jdbc "0.7.5"]
                  [org.xerial/sqlite-jdbc "3.7.2"]]
   :main ^:skip-aot url-shortener.core
