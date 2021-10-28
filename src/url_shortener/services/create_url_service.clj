@@ -2,7 +2,7 @@
   (:require [url-shortener.repositories.url_repository :as url_repository])
   (:import clojure.lang.Murmur3))
 
-(defn hash-url
+(defn- hash-url
   [url] 
   (format "%x" (Murmur3/hashUnencodedChars url)))
 

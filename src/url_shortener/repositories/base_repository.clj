@@ -8,7 +8,7 @@
     [values]
     (jdbc/insert! conn :url values))
   
-(defn prepare-statement
+(defn- prepare-statement
   [table key]
   (-> 
     (str/replace "select * from url where key = ?" #"key" key)
