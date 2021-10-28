@@ -4,5 +4,10 @@
     [url-shortener.controllers.base_controller :as base-controller]))
 
 (defn create [req]
-  (let [url (:url (:params req))]
-    (base-controller/success (create-url-service/generate-url url))))
+  (let [url 
+    (-> req 
+      :params 
+      :url)]
+    (-> url 
+      create-url-service/generate-url 
+      base-controller/success)))
