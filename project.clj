@@ -8,7 +8,9 @@
                  [http-kit "2.3.0"]
                  [ring/ring-defaults "0.3.2"]
                  [org.clojure/data.json "0.2.6"]
-                 [mount "0.1.16"]]
+                 [mount "0.1.16"]
+                 [org.clojure/java.jdbc "0.7.5"]
+                 [org.xerial/sqlite-jdbc "3.7.2"]]
   :main ^:skip-aot url-shortener.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all

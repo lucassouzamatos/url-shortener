@@ -8,6 +8,7 @@
             [clojure.data.json :as json]
             [mount.core :as mount]
             [url-shortener.infra.routes :as infra-routes]
+            [url-shortener.infra.migrations :as infra-migrations]
             [url-shortener.states.connection :refer [conn]])
   (:gen-class))
 
@@ -26,7 +27,6 @@
   [& args]
   (let [port (Integer/parseInt (or (System/getenv "PORT") "4000"))]
     (mount/start)
-    (println "State connection:" conn)
-  
+    (infra-migrations/startup)
     (server/run-server (wrap-user (wrap-defaults #'infra-routes/app-routes site-defaults)) {:port port})
     (println (str "Running webserver at http:/127.0.0.1:" port "/"))))
