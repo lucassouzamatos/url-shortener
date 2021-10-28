@@ -1,23 +1,11 @@
 (ns url-shortener.repositories.url_repository
-  (:require 
-    [url-shortener.states.connection :refer [conn]]
-    [clojure.java.jdbc :as jdbc]))
-
-(defn insert!
-  [values]
-  (jdbc/insert! conn :url values))
-
-(defn get-document-by!
-  [key value]
-  (let [query ["select * from url where hash = ?" value]
-        rows  (jdbc/query conn query)]
-    (if (empty? rows)
-      nil
-      (first rows))))
+  (:require [url-shortener.repositories.base_repository :as base_repository]))
 
 (defn create-uri 
   [original hash]
-  (insert! {:original original :hash hash})
+  (base_repository/insert! {:original original :hash hash})
   hash)
 
-(defn get-by-hash [value] (->> value (get-document-by! "hash" ,,,)))
+(defn get-by-hash 
+  [value] 
+  (base_repository/get-document-by! "hash" value))
