@@ -8,4 +8,4 @@
 
 (defn get-by-hash 
   [value] 
-  (base_repository/get-document-by! "hash" value))
+  (base_repository/get-document-by! "url" "hash" value))

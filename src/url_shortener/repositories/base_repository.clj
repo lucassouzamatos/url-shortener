@@ -9,12 +9,14 @@
     (jdbc/insert! conn :url values))
   
 (defn prepare-statement
-  [key]
-  (str/replace "select * from url where key = ?" #"key" key))
+  [table key]
+  (-> 
+    (str/replace "select * from url where key = ?" #"key" key)
+    (str/replace ,,, #"table" table)))
   
 (defn get-document-by!
-  [key value]
-  (let [statement (prepare-statement key)
+  [table key value]
+  (let [statement (prepare-statement table key)
         query [statement value]
         rows  (jdbc/query conn query)]
     (if (empty? rows)
