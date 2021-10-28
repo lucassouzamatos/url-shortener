@@ -8,4 +8,5 @@
 
 (defn generate-url
   [url]
-  (url_repository/create-uri url (hash-url url)))
+  (let [hashed (hash-url url)]
+    (url_repository/create-uri url hashed)))

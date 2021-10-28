@@ -3,8 +3,11 @@
     [url-shortener.states.connection :refer [conn]]
     [clojure.java.jdbc :as jdbc]))
 
+(defn insert!
+  [values]
+  (jdbc/insert! conn :url values))
+
 (defn create-uri 
   [original hash]
-  (jdbc/insert! conn :url {:original original :hash hash})
+  (insert! {:original original :hash hash})
   hash)
-  
