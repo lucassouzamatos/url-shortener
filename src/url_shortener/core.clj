@@ -6,7 +6,9 @@
             [clojure.pprint :as pp]
             [clojure.string :as str]
             [clojure.data.json :as json]
-            [url-shortener.infra.routes :as infra-routes])
+            [mount.core :as mount]
+            [url-shortener.infra.routes :as infra-routes]
+            [url-shortener.states.connection :refer [conn]])
   (:gen-class))
 
 ;; this is an only test for wrapping fn
@@ -23,5 +25,8 @@
   "This is our main entry point"
   [& args]
   (let [port (Integer/parseInt (or (System/getenv "PORT") "4000"))]
+    (mount/start)
+    (println "State connection:" conn)
+  
     (server/run-server (wrap-user (wrap-defaults #'infra-routes/app-routes site-defaults)) {:port port})
     (println (str "Running webserver at http:/127.0.0.1:" port "/"))))
