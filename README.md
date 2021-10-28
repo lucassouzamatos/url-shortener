@@ -20,3 +20,12 @@ For create a short url, just execute:
 ```no-highlight
 GET {{ ApiUrl }}/create?url={{ Url }}
 ```
+
+The response should be:
+```json
+  {
+    "data": {
+      "url": "http://localhost:4000/c406713a"
+    }
+  }
+```
